@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -6,682 +5,682 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>To Do Lee'st</title>
 <style>
-  :root{
-    --bg:#0f1115;--panel:#171a21;--text:#ffffff;--muted:#a6adbb;--border:#242937;
-    --pri:#8ab4f8;--acc:#55d3a6;--danger:#e84545;
-    --btn:#222a41; --btn-hover:#2a3555;
-    --pop:#0f1422; --pop-border:#2b3550;
-    --prog-track:#111827;
-    --prog-glow:rgba(138,180,248,.12);
-    --grad1:#8ab4f8; --grad2:#7dd3fc; --grad3:#55d3a6;
-  }
-  body.light{
-    --bg:#f6f7fb;--panel:#ffffff;--text:#0e1320;--muted:#5f6b84;--border:#e3e8f4;
-    --pri:#246bff;--acc:#0fa66e;--danger:#d43d3d;
-    --btn:#eef3ff; --btn-hover:#e3ecff;
-    --pop:#ffffff; --pop-border:#e3e8f4;
-    --prog-track:#eaf1ff;
-    --prog-glow:rgba(36,107,255,.12);
-    --grad1:#246bff; --grad2:#60a5fa; --grad3:#0fa66e;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0;background:radial-gradient(1100px 600px at 20% -10%, rgba(31,36,51,.8), var(--bg));color:var(--text);
-    font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Malgun Gothic,Noto Sans KR,Arial,sans-serif}
-  .app{max-width:1060px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:1.05fr 1fr;gap:16px}
-  @media (max-width: 900px){ .app{grid-template-columns:1fr;max-width:720px} }
-  .panel{padding:14px;border:1px solid var(--border);border-radius:16px;background:var(--panel)}
-  h1{margin:0 0 8px 0;font-size:22px}
-  .muted{color:var(--muted)}
-  .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-  .space{justify-content:space-between}
-  .btn{cursor:pointer;border:1px solid var(--border);border-radius:12px;background:var(--btn);color:var(--text);padding:10px 12px}
-  .btn:hover{background:var(--btn-hover)}
-  .btn-acc{color:var(--acc)} .btn-pri{color:var(--pri)} .btn-danger{color:var(--danger);border-color:#3a262b}
-  .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:#111625}
-  body.light .pill{background:#f2f5ff}
-  input[type=text]{ padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:#101521;color:var(--text);outline:none }
-  body.light input[type=text]{ background:#fff;color:var(--text) }
-  input::placeholder{color:#c2c8d6} body.light input::placeholder{color:#6c7387}
+  :root{
+    --bg:#0f1115;--panel:#171a21;--text:#ffffff;--muted:#a6adbb;--border:#242937;
+    --pri:#8ab4f8;--acc:#55d3a6;--danger:#e84545;
+    --btn:#222a41; --btn-hover:#2a3555;
+    --pop:#0f1422; --pop-border:#2b3550;
+    --prog-track:#111827;
+    --prog-glow:rgba(138,180,248,.12);
+    --grad1:#8ab4f8; --grad2:#7dd3fc; --grad3:#55d3a6;
+  }
+  body.light{
+    --bg:#f6f7fb;--panel:#ffffff;--text:#0e1320;--muted:#5f6b84;--border:#e3e8f4;
+    --pri:#246bff;--acc:#0fa66e;--danger:#d43d3d;
+    --btn:#eef3ff; --btn-hover:#e3ecff;
+    --pop:#ffffff; --pop-border:#e3e8f4;
+    --prog-track:#eaf1ff;
+    --prog-glow:rgba(36,107,255,.12);
+    --grad1:#246bff; --grad2:#60a5fa; --grad3:#0fa66e;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:radial-gradient(1100px 600px at 20% -10%, rgba(31,36,51,.8), var(--bg));color:var(--text);
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Malgun Gothic,Noto Sans KR,Arial,sans-serif}
+  .app{max-width:1060px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:1.05fr 1fr;gap:16px}
+  @media (max-width: 900px){ .app{grid-template-columns:1fr;max-width:720px} }
+  .panel{padding:14px;border:1px solid var(--border);border-radius:16px;background:var(--panel)}
+  h1{margin:0 0 8px 0;font-size:22px}
+  .muted{color:var(--muted)}
+  .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .space{justify-content:space-between}
+  .btn{cursor:pointer;border:1px solid var(--border);border-radius:12px;background:var(--btn);color:var(--text);padding:10px 12px}
+  .btn:hover{background:var(--btn-hover)}
+  .btn-acc{color:var(--acc)} .btn-pri{color:var(--pri)} .btn-danger{color:var(--danger);border-color:#3a262b}
+  .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:#111625}
+  body.light .pill{background:#f2f5ff}
+  input[type=text]{ padding:10px 12px;border-radius:12px;border:1px solid var(--border);background:#101521;color:var(--text);outline:none }
+  body.light input[type=text]{ background:#fff;color:var(--text) }
+  input::placeholder{color:#c2c8d6} body.light input::placeholder{color:#6c7387}
 
-  .cal{display:grid;grid-template-rows:auto 1fr;gap:10px}
-  .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
-  .dow{font-size:12px;color:var(--muted);text-align:center}
-  .cell{border:1px solid var(--border);border-radius:14px;background:#141927;padding:8px;min-height:84px;display:flex;flex-direction:column;gap:6px;position:relative;color:var(--text)}
-  body.light .cell{background:#fff;color:var(--text)}
-  .cell.other{opacity:.45}
-  .cell .top{display:flex;justify-content:space-between;align-items:center}
-  .date{font-weight:700;font-size:13px;color:var(--text)}
-  .ring{width:18px;height:18px;border-radius:50%;background: conic-gradient(var(--acc) calc(var(--p,0)*1%), #263047 0);}
-  body.light .ring{background: conic-gradient(var(--acc) calc(var(--p,0)*1%), #dde5ff 0);}
-  .cell.today{outline:1px solid var(--pri)}
-  .cell.sel{box-shadow:0 0 0 2px var(--pri) inset}
-  .cell:hover{background:#1b2338}
-  body.light .cell:hover{background:#f3f6ff}
+  .cal{display:grid;grid-template-rows:auto 1fr;gap:10px}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+  .dow{font-size:12px;color:var(--muted);text-align:center}
+  .cell{border:1px solid var(--border);border-radius:14px;background:#141927;padding:8px;min-height:84px;display:flex;flex-direction:column;gap:6px;position:relative;color:var(--text)}
+  body.light .cell{background:#fff;color:var(--text)}
+  .cell.other{opacity:.45}
+  .cell .top{display:flex;justify-content:space-between;align-items:center}
+  .date{font-weight:700;font-size:13px;color:var(--text)}
+  .ring{width:18px;height:18px;border-radius:50%;background: conic-gradient(var(--acc) calc(var(--p,0)*1%), #263047 0);}
+  body.light .ring{background: conic-gradient(var(--acc) calc(var(--p,0)*1%), #dde5ff 0);}
+  .cell.today{outline:1px solid var(--pri)}
+  .cell.sel{box-shadow:0 0 0 2px var(--pri) inset}
+  .cell:hover{background:#1b2338}
+  body.light .cell:hover{background:#f3f6ff}
 
-  .addrow{display:grid;grid-template-columns:1fr 44px;gap:8px}
-  ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;max-height:420px;overflow:auto}
-  li.item{display:grid;grid-template-columns:26px minmax(140px,1fr) auto;gap:10px;align-items:center;
-    padding:10px;border:1px solid var(--border);border-radius:14px;background:#141927; position:relative; overflow:visible}
-  body.light li.item{background:#fff}
-  li.item input[type=checkbox]{transform:scale(1.2)}
-  .txtwrap{display:flex;align-items:center;gap:6px;min-width:140px}
-  li.item .txt{white-space:nowrap; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-bottom:2px; color:var(--text); flex:1}
-  li.item.done .txt{color:var(--muted); text-decoration:line-through}
-  .badge{font-size:12px;padding:2px 6px;border:1px solid var(--border);border-radius:999px;color:var(--muted);white-space:nowrap}
-  .badge.overdue{color:#fff;background:var(--danger);border-color:transparent}
-  .actions{display:flex;gap:4px;align-items:center;flex-wrap:nowrap; position:relative }
-  .icon{border:1px solid var(--border);background:transparent;color:var(--text);border-radius:10px;padding:6px 8px;cursor:pointer;min-width:36px}
-  .icon:hover{background:#1d2742} body.light .icon:hover{background:#eaf0ff}
+  .addrow{display:grid;grid-template-columns:1fr 44px;gap:8px}
+  ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;max-height:420px;overflow:auto}
+  li.item{display:grid;grid-template-columns:26px minmax(140px,1fr) auto;gap:10px;align-items:center;
+    padding:10px;border:1px solid var(--border);border-radius:14px;background:#141927; position:relative; overflow:visible}
+  body.light li.item{background:#fff}
+  li.item input[type=checkbox]{transform:scale(1.2)}
+  .txtwrap{display:flex;align-items:center;gap:6px;min-width:140px}
+  li.item .txt{white-space:nowrap; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; padding-bottom:2px; color:var(--text); flex:1}
+  li.item.done .txt{color:var(--muted); text-decoration:line-through}
+  .badge{font-size:12px;padding:2px 6px;border:1px solid var(--border);border-radius:999px;color:var(--muted);white-space:nowrap}
+  .badge.overdue{color:#fff;background:var(--danger);border-color:transparent}
+  .actions{display:flex;gap:4px;align-items:center;flex-wrap:nowrap; position:relative }
+  .icon{border:1px solid var(--border);background:transparent;color:var(--text);border-radius:10px;padding:6px 8px;cursor:pointer;min-width:36px}
+  .icon:hover{background:#1d2742} body.light .icon:hover{background:#eaf0ff}
 
-  .duePortal{ position:fixed; inset:0; z-index:9999; pointer-events:none }
-  .due-pop{ position:absolute; width:320px; max-height:360px; display:flex; flex-direction:column;
-            background:var(--pop); border:1px solid var(--pop-border); border-radius:12px;
-            box-shadow:0 8px 24px rgba(0,0,0,.35); pointer-events:auto }
-  .due-head{ display:flex; align-items:center; justify-content:space-between; padding:8px; position:sticky; top:0; background:var(--pop); border-bottom:1px solid var(--pop-border) }
-  .due-head .title{ font-weight:700 }
-  .due-cal{ padding:8px }
-  .due-dow{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; font-size:12px; color:var(--muted); text-align:center }
-  .due-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px }
-  .dcell{ padding:8px 0; text-align:center; border:1px solid var(--pop-border); border-radius:10px; cursor:pointer; user-select:none }
-  .dcell.other{ opacity:.4 }
-  .dcell.today{ outline:1px solid var(--pri) }
-  .dcell.sel{ background:rgba(136,178,255,.15); border-color:var(--pri) }
-  .due-time{ padding:8px; display:flex; gap:8px; align-items:center; border-top:1px dashed var(--pop-border) }
-  .timebox{ display:flex; gap:6px; align-items:center }
-  select{ border:1px solid var(--pop-border); background:transparent; color:var(--text); border-radius:10px; padding:6px 10px }
-  body.light select{ background:#fff; color:var(--text) }
-  .actionbar{ position:sticky; bottom:0; display:flex; gap:8px; justify-content:flex-end; padding:8px; background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.06) 30%, var(--pop) 60%); border-top:1px solid var(--pop-border) }
-  .btn-save{ background:var(--acc); color:#0b1220; border:0; border-radius:10px; padding:8px 12px; cursor:pointer; font-weight:700 }
-  .btn-cancel{ background:transparent; color:var(--text); border:1px solid var(--border); border-radius:10px; padding:8px 10px; cursor:pointer }
+  .duePortal{ position:fixed; inset:0; z-index:9999; pointer-events:none }
+  .due-pop{ position:absolute; width:320px; max-height:360px; display:flex; flex-direction:column;
+            background:var(--pop); border:1px solid var(--pop-border); border-radius:12px;
+            box-shadow:0 8px 24px rgba(0,0,0,.35); pointer-events:auto }
+  .due-head{ display:flex; align-items:center; justify-content:space-between; padding:8px; position:sticky; top:0; background:var(--pop); border-bottom:1px solid var(--pop-border) }
+  .due-head .title{ font-weight:700 }
+  .due-cal{ padding:8px }
+  .due-dow{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; font-size:12px; color:var(--muted); text-align:center }
+  .due-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px }
+  .dcell{ padding:8px 0; text-align:center; border:1px solid var(--pop-border); border-radius:10px; cursor:pointer; user-select:none }
+  .dcell.other{ opacity:.4 }
+  .dcell.today{ outline:1px solid var(--pri) }
+  .dcell.sel{ background:rgba(136,178,255,.15); border-color:var(--pri) }
+  .due-time{ padding:8px; display:flex; gap:8px; align-items:center; border-top:1px dashed var(--pop-border) }
+  .timebox{ display:flex; gap:6px; align-items:center }
+  select{ border:1px solid var(--pop-border); background:transparent; color:var(--text); border-radius:10px; padding:6px 10px }
+  body.light select{ background:#fff; color:var(--text) }
+  .actionbar{ position:sticky; bottom:0; display:flex; gap:8px; justify-content:flex-end; padding:8px; background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.06) 30%, var(--pop) 60%); border-top:1px solid var(--pop-border) }
+  .btn-save{ background:var(--acc); color:#0b1220; border:0; border-radius:10px; padding:8px 12px; cursor:pointer; font-weight:700 }
+  .btn-cancel{ background:transparent; color:var(--text); border:1px solid var(--border); border-radius:10px; padding:8px 10px; cursor:pointer }
 
-  .progwrap{ margin:12px -4px 0; }
-  .progwrap .row{ padding:0 4px }
-  progress{
-    width:calc(100% + 8px);
-    margin:6px -4px 0;
-    height:24px;
-    border:0;
-    border-radius:999px;
-    background:var(--prog-track);
-    box-shadow:
-      inset 0 1px 0 rgba(255,255,255,.05),
-      0 0 0 1px var(--border),
-      0 6px 18px var(--prog-glow);
-    overflow:hidden;
-  }
-  progress::-webkit-progress-bar{ background:transparent; border-radius:999px }
-  progress::-webkit-progress-value{
-    border-radius:999px;
-    background:linear-gradient(90deg, var(--grad1) 0%, var(--grad2) 50%, var(--grad3) 100%);
-    transition:width .25s ease;
-  }
-  progress::-moz-progress-bar{
-    border-radius:999px;
-    background:linear-gradient(90deg, var(--grad1) 0%, var(--grad2) 50%, var(--grad3) 100%);
-    transition:width .25s ease;
-  }
+  .progwrap{ margin:12px -4px 0; }
+  .progwrap .row{ padding:0 4px }
+  progress{
+    width:calc(100% + 8px);
+    margin:6px -4px 0;
+    height:24px;
+    border:0;
+    border-radius:999px;
+    background:var(--prog-track);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.05),
+      0 0 0 1px var(--border),
+      0 6px 18px var(--prog-glow);
+    overflow:hidden;
+  }
+  progress::-webkit-progress-bar{ background:transparent; border-radius:999px }
+  progress::-webkit-progress-value{
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--grad1) 0%, var(--grad2) 50%, var(--grad3) 100%);
+    transition:width .25s ease;
+  }
+  progress::-moz-progress-bar{
+    border-radius:999px;
+    background:linear-gradient(90deg, var(--grad1) 0%, var(--grad2) 50%, var(--grad3) 100%);
+    transition:width .25s ease;
+  }
 </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3323631723585454"
+     crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="app">
+  <div class="app">
 
-    <section class="panel cal">
-      <div class="row space">
-        <div class="row">
-          <button id="prevMonth" class="btn" title="이전 달" type="button">◀</button>
-          <button id="todayBtn" class="btn btn-pri" title="오늘" type="button">오늘</button>
-          <button id="nextMonth" class="btn" title="다음 달" type="button">▶</button>
-          <h1 id="monthTitle" style="margin-left:8px">2025년 9월</h1>
-        </div>
-        <div class="row">
-          <button id="themeToggle" class="btn" type="button">Dark/Light</button>
-          <button id="openPiP" class="btn btn-acc" type="button">PiP 열기</button>
-        </div>
-      </div>
-      <div class="grid">
-        <div class="dow">일</div><div class="dow">월</div><div class="dow">화</div><div class="dow">수</div><div class="dow">목</div><div class="dow">금</div><div class="dow">토</div>
-      </div>
-      <div class="grid" id="calGrid" aria-label="month-grid"></div>
-    </section>
+    <section class="panel cal">
+      <div class="row space">
+        <div class="row">
+          <button id="prevMonth" class="btn" title="이전 달" type="button">◀</button>
+          <button id="todayBtn" class="btn btn-pri" title="오늘" type="button">오늘</button>
+          <button id="nextMonth" class="btn" title="다음 달" type="button">▶</button>
+          <h1 id="monthTitle" style="margin-left:8px">2025년 9월</h1>
+        </div>
+        <div class="row">
+          <button id="themeToggle" class="btn" type="button">Dark/Light</button>
+          <button id="openPiP" class="btn btn-acc" type="button">PiP 열기</button>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="dow">일</div><div class="dow">월</div><div class="dow">화</div><div class="dow">수</div><div class="dow">목</div><div class="dow">금</div><div class="dow">토</div>
+      </div>
+      <div class="grid" id="calGrid" aria-label="month-grid"></div>
+    </section>
 
-    <section class="panel">
-      <div class="row space">
-        <div class="row wrap">
-          <h1 id="dayTitle" style="margin:0">2025-09-16</h1>
-          <span class="pill"><span class="muted">완료/전체</span> <strong id="doneTotal">0/0</strong></span>
-        </div>
-        <div class="row">
-          <button id="rolloverBtn" class="btn" type="button">미완료 이월→다음날</button>
-          <button id="clearDone" class="btn ghost" type="button">완료 삭제</button>
-          <button id="clearAll" class="btn btn-danger ghost" type="button">전체 삭제</button>
-        </div>
-      </div>
+    <section class="panel">
+      <div class="row space">
+        <div class="row wrap">
+          <h1 id="dayTitle" style="margin:0">2025-09-16</h1>
+          <span class="pill"><span class="muted">완료/전체</span> <strong id="doneTotal">0/0</strong></span>
+        </div>
+        <div class="row">
+          <button id="rolloverBtn" class="btn" type="button">미완료 이월→다음날</button>
+          <button id="clearDone" class="btn ghost" type="button">완료 삭제</button>
+          <button id="clearAll" class="btn btn-danger ghost" type="button">전체 삭제</button>
+        </div>
+      </div>
 
-      <div class="addrow" style="margin-top:10px">
-        <input id="taskInput" type="text" placeholder="할 일을 입력하고 Enter" autocomplete="off">
-        <button id="addBtn" class="btn btn-acc" title="추가" type="button">＋</button>
-      </div>
+      <div class="addrow" style="margin-top:10px">
+        <input id="taskInput" type="text" placeholder="할 일을 입력하고 Enter" autocomplete="off">
+        <button id="addBtn" class="btn btn-acc" title="추가" type="button">＋</button>
+      </div>
 
-      <ul id="list" style="margin-top:10px"></ul>
+      <ul id="list" style="margin-top:10px"></ul>
 
-      <div class="progwrap">
-        <div class="row space">
-          <span id="progText">완료/전체 0%</span>
-          <span class="muted" id="counter">0 / 0</span>
-        </div>
-        <progress id="progBar" value="0" max="100"></progress>
-      </div>
-    </section>
-  </div>
+      <div class="progwrap">
+        <div class="row space">
+          <span id="progText">완료/전체 0%</span>
+          <span class="muted" id="counter">0 / 0</span>
+        </div>
+        <progress id="progBar" value="0" max="100"></progress>
+      </div>
+    </section>
+  </div>
 
-  <template id="pip-template">
-    <div class="pip" style="padding:10px">
-      <header style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-        <strong>할 일</strong> <small id="pipDate" class="muted"></small>
-      </header>
-      <ul id="list"></ul>
-      <div class="progwrap" style="margin-top:8px">
-        <div class="row space">
-          <span id="progText">완료/전체 0%</span>
-          <span class="muted" id="counter">0 / 0</span>
-        </div>
-        <progress id="progBar" value="0" max="100"></progress>
-      </div>
-    </div>
-  </template>
+  <template id="pip-template">
+    <div class="pip" style="padding:10px">
+      <header style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <strong>할 일</strong> <small id="pipDate" class="muted"></small>
+      </header>
+      <ul id="list"></ul>
+      <div class="progwrap" style="margin-top:8px">
+        <div class="row space">
+          <span id="progText">완료/전체 0%</span>
+          <span class="muted" id="counter">0 / 0</span>
+        </div>
+        <progress id="progBar" value="0" max="100"></progress>
+      </div>
+    </div>
+  </template>
 
-  <div id="due-portal" class="duePortal" style="display:none"></div>
+  <div id="due-portal" class="duePortal" style="display:none"></div>
 
 <script>
 (() => {
-  const TASKS_KEY = 'cal_todos_v2';
-  const SEL_KEY   = 'cal_selected_v1';
-  const ROLL_KEY  = 'cal_rollover_v1';
-  const PREF_KEY  = 'cal_prefs_v1';
-  const REV_KEY   = 'cal_rev_v1';
-  const bc = new BroadcastChannel('CAL_TODO_SYNC_V1');
+  const TASKS_KEY = 'cal_todos_v2';
+  const SEL_KEY   = 'cal_selected_v1';
+  const ROLL_KEY  = 'cal_rollover_v1';
+  const PREF_KEY  = 'cal_prefs_v1';
+  const REV_KEY   = 'cal_rev_v1';
+  const bc = new BroadcastChannel('CAL_TODO_SYNC_V1');
 
-  const REPEAT_ORDER = ['none','daily','weekly','monthly'];
-  function ymd(d){ const y=d.getFullYear(), m=(''+(d.getMonth()+1)).padStart(2,'0'), dd=(''+d.getDate()).padStart(2,'0'); return `${y}-${m}-${dd}`; }
-  function addDays(d,n){ const r=new Date(d); r.setDate(r.getDate()+n); return r; }
-  function startOfMonth(d){ const r=new Date(d); r.setDate(1); r.setHours(0,0,0,0); return r; }
-  function sameDay(a,b){ return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate(); }
-  function fmtMonth(d){ return new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'long'}).format(d); }
-  function fmtDue(ts){ if(!ts) return ''; return new Intl.DateTimeFormat('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(ts)); }
-  function cycleRepeat(cur){ const i = REPEAT_ORDER.indexOf(cur||'none'); return REPEAT_ORDER[(i+1)%REPEAT_ORDER.length]; }
+  const REPEAT_ORDER = ['none','daily','weekly','monthly'];
+  function ymd(d){ const y=d.getFullYear(), m=(''+(d.getMonth()+1)).padStart(2,'0'), dd=(''+d.getDate()).padStart(2,'0'); return `${y}-${m}-${dd}`; }
+  function addDays(d,n){ const r=new Date(d); r.setDate(r.getDate()+n); return r; }
+  function startOfMonth(d){ const r=new Date(d); r.setDate(1); r.setHours(0,0,0,0); return r; }
+  function sameDay(a,b){ return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate(); }
+  function fmtMonth(d){ return new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'long'}).format(d); }
+  function fmtDue(ts){ if(!ts) return ''; return new Intl.DateTimeFormat('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(ts)); }
+  function cycleRepeat(cur){ const i = REPEAT_ORDER.indexOf(cur||'none'); return REPEAT_ORDER[(i+1)%REPEAT_ORDER.length]; }
 
-  function loadMap(key){ try{ return JSON.parse(localStorage.getItem(key)||'{}'); }catch{ return {}; } }
-  function saveMap(key, obj){ localStorage.setItem(key, JSON.stringify(obj)); }
-  function bumpRev(ctx=window){ const n = Number(ctx.localStorage.getItem(REV_KEY)||'0')+1; ctx.localStorage.setItem(REV_KEY, String(n)); return n; }
-  function getSelected(ctx=window){ return ctx.localStorage.getItem(SEL_KEY) || ymd(new Date()); }
-  function setSelected(key){ localStorage.setItem(SEL_KEY, key); bc.postMessage({type:'date', key}); bumpRev(); }
+  function loadMap(key){ try{ return JSON.parse(localStorage.getItem(key)||'{}'); }catch{ return {}; } }
+  function saveMap(key, obj){ localStorage.setItem(key, JSON.stringify(obj)); }
+  function bumpRev(ctx=window){ const n = Number(ctx.localStorage.getItem(REV_KEY)||'0')+1; ctx.localStorage.setItem(REV_KEY, String(n)); return n; }
+  function getSelected(ctx=window){ return ctx.localStorage.getItem(SEL_KEY) || ymd(new Date()); }
+  function setSelected(key){ localStorage.setItem(SEL_KEY, key); bc.postMessage({type:'date', key}); bumpRev(); }
 
-  function getTasks(key, ctx=window){ const map = (()=>{ try{ return JSON.parse(ctx.localStorage.getItem(TASKS_KEY)||'{}'); }catch{ return {}; } })(); return map[key] || []; }
-  function setTasks(key, arr, ctx=window, channel=bc){ const map = (()=>{ try{ return JSON.parse(ctx.localStorage.getItem(TASKS_KEY)||'{}'); }catch{ return {}; } })(); map[key] = arr; ctx.localStorage.setItem(TASKS_KEY, JSON.stringify(map)); channel.postMessage({type:'tasks', key}); bumpRev(ctx); }
+  function getTasks(key, ctx=window){ const map = (()=>{ try{ return JSON.parse(ctx.localStorage.getItem(TASKS_KEY)||'{}'); }catch{ return {}; } })(); return map[key] || []; }
+  function setTasks(key, arr, ctx=window, channel=bc){ const map = (()=>{ try{ return JSON.parse(ctx.localStorage.getItem(TASKS_KEY)||'{}'); }catch{ return {}; } })(); map[key] = arr; ctx.localStorage.setItem(TASKS_KEY, JSON.stringify(map)); channel.postMessage({type:'tasks', key}); bumpRev(ctx); }
 
-  function makeTask(text){ return { id: crypto.randomUUID(), text, done:false, createdAt: Date.now(), repeat:'none', dueAt:null }; }
+  function makeTask(text){ return { id: crypto.randomUUID(), text, done:false, createdAt: Date.now(), repeat:'none', dueAt:null }; }
 
-  function nextRepeatDate(dateKey, repeat){
-    const [y,m,d] = dateKey.split('-').map(Number);
-    const base = new Date(y, m-1, d);
-    if (repeat==='daily') return ymd(addDays(base, 1));
-    if (repeat==='weekly') return ymd(addDays(base, 7));
-    if (repeat==='monthly'){ const n=new Date(y, m-1, d); n.setMonth(n.getMonth()+1); return ymd(n); }
-    return null;
-  }
+  function nextRepeatDate(dateKey, repeat){
+    const [y,m,d] = dateKey.split('-').map(Number);
+    const base = new Date(y, m-1, d);
+    if (repeat==='daily') return ymd(addDays(base, 1));
+    if (repeat==='weekly') return ymd(addDays(base, 7));
+    if (repeat==='monthly'){ const n=new Date(y, m-1, d); n.setMonth(n.getMonth()+1); return ymd(n); }
+    return null;
+  }
 
-  function requestNotify(){ if (!('Notification' in window)) return; if (Notification.permission === 'default'){ Notification.requestPermission(); } }
-  function maybeNotify(task, key){
-    if (!('Notification' in window) || Notification.permission!=='granted') return;
-    const now = Date.now();
-    if (task.dueAt && !task.done && task.dueAt <= now){ new Notification('할 일 마감', { body: `[${key}] ${task.text}` }); }
-  }
+  function requestNotify(){ if (!('Notification' in window)) return; if (Notification.permission === 'default'){ Notification.requestPermission(); } }
+  function maybeNotify(task, key){
+    if (!('Notification' in window) || Notification.permission!=='granted') return;
+    const now = Date.now();
+    if (task.dueAt && !task.done && task.dueAt <= now){ new Notification('할 일 마감', { body: `[${key}] ${task.text}` }); }
+  }
 
-  function runDailyRollover(){
-    const todayKey = ymd(new Date());
-    const last = localStorage.getItem(ROLL_KEY)||'';
-    if (last === todayKey) return;
-    const yKey = ymd(addDays(new Date(), -1));
-    const map = loadMap(TASKS_KEY);
-    const yTasks = (map[yKey]||[]);
-    if (yTasks.length){
-      const undone = yTasks.filter(t=>!t.done);
-      if (undone.length){
-        map[yKey] = yTasks.filter(t=>t.done);
-        const nextArr = (map[todayKey]||[]);
-        map[todayKey] = nextArr.concat(undone.map(t=>({ ...t })));
-        saveMap(TASKS_KEY, map);
-        bc.postMessage({type:'tasks', key: todayKey});
-        bumpRev();
-      }
-    }
-    localStorage.setItem(ROLL_KEY, todayKey);
-  }
+  function runDailyRollover(){
+    const todayKey = ymd(new Date());
+    const last = localStorage.getItem(ROLL_KEY)||'';
+    if (last === todayKey) return;
+    const yKey = ymd(addDays(new Date(), -1));
+    const map = loadMap(TASKS_KEY);
+    const yTasks = (map[yKey]||[]);
+    if (yTasks.length){
+      const undone = yTasks.filter(t=>!t.done);
+      if (undone.length){
+        map[yKey] = yTasks.filter(t=>t.done);
+        const nextArr = (map[todayKey]||[]);
+        map[todayKey] = nextArr.concat(undone.map(t=>({ ...t })));
+        saveMap(TASKS_KEY, map);
+        bc.postMessage({type:'tasks', key: todayKey});
+        bumpRev();
+      }
+    }
+    localStorage.setItem(ROLL_KEY, todayKey);
+  }
 
-  function getPrefs(){ try{ return JSON.parse(localStorage.getItem(PREF_KEY)||'{}'); }catch{ return {}; } }
-  function setPrefs(p){ localStorage.setItem(PREF_KEY, JSON.stringify(p)); }
-  function applyTheme(){ const p = getPrefs(); document.body.classList.toggle('light', p.theme==='light'); }
+  function getPrefs(){ try{ return JSON.parse(localStorage.getItem(PREF_KEY)||'{}'); }catch{ return {}; } }
+  function setPrefs(p){ localStorage.setItem(PREF_KEY, JSON.stringify(p)); }
+  function applyTheme(){ const p = getPrefs(); document.body.classList.toggle('light', p.theme==='light'); }
 
-  const state = { month: new Date(), sel: new Date(getSelected()) };
-  state.month = new Date(state.sel.getFullYear(), state.sel.getMonth(), 1);
+  const state = { month: new Date(), sel: new Date(getSelected()) };
+  state.month = new Date(state.sel.getFullYear(), state.sel.getMonth(), 1);
 
-  const monthTitle = document.getElementById('monthTitle');
-  const calGrid = document.getElementById('calGrid');
-  const dayTitle = document.getElementById('dayTitle');
-  const doneTotal = document.getElementById('doneTotal');
-  const progText = document.getElementById('progText');
-  const counter = document.getElementById('counter');
-  const progBar = document.getElementById('progBar');
-  const taskInput = document.getElementById('taskInput');
-  const addBtn = document.getElementById('addBtn');
-  const list = document.getElementById('list');
-  const clearDoneBtn = document.getElementById('clearDone');
-  const clearAllBtn = document.getElementById('clearAll');
-  const rolloverBtn = document.getElementById('rolloverBtn');
-  const duePortal = document.getElementById('due-portal');
+  const monthTitle = document.getElementById('monthTitle');
+  const calGrid = document.getElementById('calGrid');
+  const dayTitle = document.getElementById('dayTitle');
+  const doneTotal = document.getElementById('doneTotal');
+  const progText = document.getElementById('progText');
+  const counter = document.getElementById('counter');
+  const progBar = document.getElementById('progBar');
+  const taskInput = document.getElementById('taskInput');
+  const addBtn = document.getElementById('addBtn');
+  const list = document.getElementById('list');
+  const clearDoneBtn = document.getElementById('clearDone');
+  const clearAllBtn = document.getElementById('clearAll');
+  const rolloverBtn = document.getElementById('rolloverBtn');
+  const duePortal = document.getElementById('due-portal');
 
-  function renderCalendar(){
-    const first = startOfMonth(state.month);
-    const startWeekday = first.getDay();
-    const gridStart = addDays(first, -startWeekday);
-    const today = new Date();
-    const selKey = getSelected();
+  function renderCalendar(){
+    const first = startOfMonth(state.month);
+    const startWeekday = first.getDay();
+    const gridStart = addDays(first, -startWeekday);
+    const today = new Date();
+    const selKey = getSelected();
 
-    monthTitle.textContent = fmtMonth(state.month);
-    calGrid.innerHTML = '';
+    monthTitle.textContent = fmtMonth(state.month);
+    calGrid.innerHTML = '';
 
-    for (let i=0;i<42;i++){
-      const day = addDays(gridStart, i);
-      const key = ymd(day);
-      const cell = document.createElement('button');
-      cell.className = 'cell'; cell.type='button';
-      if (day.getMonth() !== state.month.getMonth()) cell.classList.add('other');
-      if (sameDay(day, today)) cell.classList.add('today');
-      if (key === selKey) cell.classList.add('sel');
+    for (let i=0;i<42;i++){
+      const day = addDays(gridStart, i);
+      const key = ymd(day);
+      const cell = document.createElement('button');
+      cell.className = 'cell'; cell.type='button';
+      if (day.getMonth() !== state.month.getMonth()) cell.classList.add('other');
+      if (sameDay(day, today)) cell.classList.add('today');
+      if (key === selKey) cell.classList.add('sel');
 
-      const ts = getTasks(key); const total = ts.length; const done = ts.filter(t=>t.done).length;
-      const pct = total? Math.round(done/total*100) : 0;
-      cell.innerHTML = `
-        <div class="top">
-          <span class="date">${day.getDate()}</span>
-          <span class="ring" style="--p:${pct}"></span>
-        </div>
-        <div class="muted" style="font-size:12px">${total? `${done}/${total}` : '&nbsp;'}</div>
-      `;
-      cell.addEventListener('click', ()=>{
-        state.sel = day;
-        setSelected(key);
-        renderCalendar(); renderDay();
-      });
-      calGrid.appendChild(cell);
-    }
-  }
+      const ts = getTasks(key); const total = ts.length; const done = ts.filter(t=>t.done).length;
+      const pct = total? Math.round(done/total*100) : 0;
+      cell.innerHTML = `
+        <div class="top">
+          <span class="date">${day.getDate()}</span>
+          <span class="ring" style="--p:${pct}"></span>
+        </div>
+        <div class="muted" style="font-size:12px">${total? `${done}/${total}` : '&nbsp;'}</div>
+      `;
+      cell.addEventListener('click', ()=>{
+        state.sel = day;
+        setSelected(key);
+        renderCalendar(); renderDay();
+      });
+      calGrid.appendChild(cell);
+    }
+  }
 
-  function renderDay(){
-    const key = getSelected();
-    dayTitle.textContent = key;
+  function renderDay(){
+    const key = getSelected();
+    dayTitle.textContent = key;
 
-    const tasks = getTasks(key);
-    const total = tasks.length, done = tasks.filter(t=>t.done).length;
-    list.innerHTML = '';
-    tasks.forEach(item => {
-      const li = document.createElement('li');
-      li.className = 'item' + (item.done ? ' done': '');
-      li.dataset.id = item.id;
-      const dueLabel = item.dueAt ? fmtDue(item.dueAt) : '';
-      const overdue = item.dueAt && !item.done && item.dueAt <= Date.now();
-      const repLabel = (item.repeat && item.repeat!=='none') ? (item.repeat==='daily'?'매일':item.repeat==='weekly'?'매주':'매월') : '';
+    const tasks = getTasks(key);
+    const total = tasks.length, done = tasks.filter(t=>t.done).length;
+    list.innerHTML = '';
+    tasks.forEach(item => {
+      const li = document.createElement('li');
+      li.className = 'item' + (item.done ? ' done': '');
+      li.dataset.id = item.id;
+      const dueLabel = item.dueAt ? fmtDue(item.dueAt) : '';
+      const overdue = item.dueAt && !item.done && item.dueAt <= Date.now();
+      const repLabel = (item.repeat && item.repeat!=='none') ? (item.repeat==='daily'?'매일':item.repeat==='weekly'?'매주':'매월') : '';
 
-      li.innerHTML = `
-        <input type="checkbox" ${item.done?'checked':''} aria-label="완료">
-        <div class="txtwrap">
-          <div class="txt" contenteditable="true" spellcheck="false"></div>
-          ${repLabel? `<span class="badge rep" title="반복">${repLabel}</span>`:''}
-          ${dueLabel? `<span class="badge ${overdue?'overdue':''}" title="마감">${dueLabel}</span>`:''}
-        </div>
-        <div class="actions">
-          <button class="icon" data-act="rep" title="반복 전환(없음→매일→매주→매월)">↻</button>
-          <button class="icon" data-act="due" title="마감 날짜·시간 설정">📅</button>
-          <button class="icon" data-act="del" title="삭제">🗑</button>
-        </div>
-      `;
-      li.querySelector('.txt').textContent = item.text;
-      list.appendChild(li);
-      if (overdue){ li.style.outline = '2px solid var(--danger)'; } else { li.style.outline = ''; }
-    });
+      li.innerHTML = `
+        <input type="checkbox" ${item.done?'checked':''} aria-label="완료">
+        <div class="txtwrap">
+          <div class="txt" contenteditable="true" spellcheck="false"></div>
+          ${repLabel? `<span class="badge rep" title="반복">${repLabel}</span>`:''}
+          ${dueLabel? `<span class="badge ${overdue?'overdue':''}" title="마감">${dueLabel}</span>`:''}
+        </div>
+        <div class="actions">
+          <button class="icon" data-act="rep" title="반복 전환(없음→매일→매주→매월)">↻</button>
+          <button class="icon" data-act="due" title="마감 날짜·시간 설정">📅</button>
+          <button class="icon" data-act="del" title="삭제">🗑</button>
+        </div>
+      `;
+      li.querySelector('.txt').textContent = item.text;
+      list.appendChild(li);
+      if (overdue){ li.style.outline = '2px solid var(--danger)'; } else { li.style.outline = ''; }
+    });
 
-    const ratio = total? Math.round(done/total*100):0;
-    progText.textContent = `완료/전체 ${ratio}%`;
-    counter.textContent = `${done} / ${total}`;
-    progBar.value = ratio;
-    doneTotal.textContent = `${done}/${total}`;
-  }
+    const ratio = total? Math.round(done/total*100):0;
+    progText.textContent = `완료/전체 ${ratio}%`;
+    counter.textContent = `${done} / ${total}`;
+    progBar.value = ratio;
+    doneTotal.textContent = `${done}/${total}`;
+  }
 
-  function addTask(){
-    const key = getSelected();
-    const text = (taskInput.value||'').trim();
-    if (!text) return;
-    const arr = getTasks(key); arr.push(makeTask(text)); setTasks(key, arr);
-    taskInput.value='';
-    renderDay(); renderCalendar();
-  }
+  function addTask(){
+    const key = getSelected();
+    const text = (taskInput.value||'').trim();
+    if (!text) return;
+    const arr = getTasks(key); arr.push(makeTask(text)); setTasks(key, arr);
+    taskInput.value='';
+    renderDay(); renderCalendar();
+  }
 
-  addBtn.addEventListener('click', addTask);
-  taskInput.addEventListener('keydown', (e)=>{ if (e.isComposing) return; if (e.key==='Enter'){ e.preventDefault(); addTask(); } });
+  addBtn.addEventListener('click', addTask);
+  taskInput.addEventListener('keydown', (e)=>{ if (e.isComposing) return; if (e.key==='Enter'){ e.preventDefault(); addTask(); } });
 
-  list.addEventListener('keydown', (e)=>{ if (e.target.matches('.txt') && e.key==='Enter'){ e.preventDefault(); } });
+  list.addEventListener('keydown', (e)=>{ if (e.target.matches('.txt') && e.key==='Enter'){ e.preventDefault(); } });
 
-  list.addEventListener('change', (e)=>{
-    const key = getSelected();
-    if (e.target.matches('input[type=checkbox]')){
-      const id = e.target.closest('.item')?.dataset.id;
-      const arr = getTasks(key);
-      const i = arr.findIndex(t=>t.id===id);
-      if (i>=0){
-        const wasDone = arr[i].done;
-        arr[i].done = !!e.target.checked;
-        setTasks(key, arr);
-        if (!wasDone && arr[i].done && arr[i].repeat && arr[i].repeat!=='none'){
-          const nextKey = nextRepeatDate(key, arr[i].repeat);
-          if (nextKey){
-            const clone = { ...arr[i], id: crypto.randomUUID(), done:false };
-            if (clone.dueAt){
-              const old=new Date(clone.dueAt); let next=new Date(old);
-              if (arr[i].repeat==='daily') next = addDays(old,1);
-              else if (arr[i].repeat==='weekly') next = addDays(old,7);
-              else if (arr[i].repeat==='monthly'){ next.setMonth(next.getMonth()+1); }
-              clone.dueAt = next.getTime();
-            }
-            const nextArr = getTasks(nextKey); nextArr.push(clone); setTasks(nextKey, nextArr);
-          }
-        }
-        renderDay(); renderCalendar();
-      }
-    }
-  });
+  list.addEventListener('change', (e)=>{
+    const key = getSelected();
+    if (e.target.matches('input[type=checkbox]')){
+      const id = e.target.closest('.item')?.dataset.id;
+      const arr = getTasks(key);
+      const i = arr.findIndex(t=>t.id===id);
+      if (i>=0){
+        const wasDone = arr[i].done;
+        arr[i].done = !!e.target.checked;
+        setTasks(key, arr);
+        if (!wasDone && arr[i].done && arr[i].repeat && arr[i].repeat!=='none'){
+          const nextKey = nextRepeatDate(key, arr[i].repeat);
+          if (nextKey){
+            const clone = { ...arr[i], id: crypto.randomUUID(), done:false };
+            if (clone.dueAt){
+              const old=new Date(clone.dueAt); let next=new Date(old);
+              if (arr[i].repeat==='daily') next = addDays(old,1);
+              else if (arr[i].repeat==='weekly') next = addDays(old,7);
+              else if (arr[i].repeat==='monthly'){ next.setMonth(next.getMonth()+1); }
+              clone.dueAt = next.getTime();
+            }
+            const nextArr = getTasks(nextKey); nextArr.push(clone); setTasks(nextKey, nextArr);
+          }
+        }
+        renderDay(); renderCalendar();
+      }
+    }
+  });
 
-  function buildCalendarContent(currentTs){
-    const wrapper = document.createElement('div');
-    wrapper.className = 'due-pop';
-    const now = currentTs ? new Date(currentTs) : new Date();
-    const state = { view: new Date(now.getFullYear(), now.getMonth(), 1), sel: new Date(now) };
+  function buildCalendarContent(currentTs){
+    const wrapper = document.createElement('div');
+    wrapper.className = 'due-pop';
+    const now = currentTs ? new Date(currentTs) : new Date();
+    const state = { view: new Date(now.getFullYear(), now.getMonth(), 1), sel: new Date(now) };
 
-    const head = document.createElement('div'); head.className = 'due-head';
-    head.innerHTML = `<button class="icon" data-nav="-1" title="이전 달">◀</button><div class="title">${fmtMonth(state.view)}</div><button class="icon" data-nav="1" title="다음 달">▶</button>`;
+    const head = document.createElement('div'); head.className = 'due-head';
+    head.innerHTML = `<button class="icon" data-nav="-1" title="이전 달">◀</button><div class="title">${fmtMonth(state.view)}</div><button class="icon" data-nav="1" title="다음 달">▶</button>`;
 
-    const cal = document.createElement('div'); cal.className = 'due-cal';
-    const dow = document.createElement('div'); dow.className = 'due-dow';
-    dow.innerHTML = '<div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>';
-    const grid = document.createElement('div'); grid.className = 'due-grid';
+    const cal = document.createElement('div'); cal.className = 'due-cal';
+    const dow = document.createElement('div'); dow.className = 'due-dow';
+    dow.innerHTML = '<div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>';
+    const grid = document.createElement('div'); grid.className = 'due-grid';
 
-    const time = document.createElement('div'); time.className = 'due-time';
-    const hourSel = document.createElement('select'); const minSel = document.createElement('select');
-    for(let h=0;h<24;h++){ const o=document.createElement('option'); o.value=String(h); o.textContent=(h+'').padStart(2,'0'); hourSel.appendChild(o); }
-    for(let m=0;m<60;m+=5){ const o=document.createElement('option'); o.value=String(m); o.textContent=(m+'').padStart(2,'0'); minSel.appendChild(o); }
-    hourSel.value = String(state.sel.getHours());
-    minSel.value = String(Math.round(state.sel.getMinutes()/5)*5 % 60);
-    time.innerHTML = `<span class="muted">시간</span>`;
-    const tb = document.createElement('div'); tb.className='timebox'; tb.append(hourSel, document.createTextNode(' : '), minSel);
-    time.appendChild(tb);
+    const time = document.createElement('div'); time.className = 'due-time';
+    const hourSel = document.createElement('select'); const minSel = document.createElement('select');
+    for(let h=0;h<24;h++){ const o=document.createElement('option'); o.value=String(h); o.textContent=(h+'').padStart(2,'0'); hourSel.appendChild(o); }
+    for(let m=0;m<60;m+=5){ const o=document.createElement('option'); o.value=String(m); o.textContent=(m+'').padStart(2,'0'); minSel.appendChild(o); }
+    hourSel.value = String(state.sel.getHours());
+    minSel.value = String(Math.round(state.sel.getMinutes()/5)*5 % 60);
+    time.innerHTML = `<span class="muted">시간</span>`;
+    const tb = document.createElement('div'); tb.className='timebox'; tb.append(hourSel, document.createTextNode(' : '), minSel);
+    time.appendChild(tb);
 
-    const actions = document.createElement('div'); actions.className='actionbar';
-    actions.innerHTML = `<button class="btn-cancel" data-act="due-cancel">취소</button><button class="btn-save" data-act="due-save">저장</button>`;
+    const actions = document.createElement('div'); actions.className='actionbar';
+    actions.innerHTML = `<button class="btn-cancel" data-act="due-cancel">취소</button><button class="btn-save" data-act="due-save">저장</button>`;
 
-    cal.append(dow, grid);
-    wrapper.append(head, cal, time, actions);
+    cal.append(dow, grid);
+    wrapper.append(head, cal, time, actions);
 
-    function fillGrid(){
-      grid.innerHTML='';
-      const first = new Date(state.view); first.setDate(1);
-      const start = new Date(first); start.setDate(1 - first.getDay());
-      const today = new Date();
-      for(let i=0;i<42;i++){
-        const d = addDays(start, i);
-        const btn = document.createElement('button');
-        btn.type='button'; btn.className='dcell';
-        if (d.getMonth()!==state.view.getMonth()) btn.classList.add('other');
-        if (sameDay(d, today)) btn.classList.add('today');
-        if (sameDay(d, state.sel)) btn.classList.add('sel');
-        btn.textContent = d.getDate();
-        btn.addEventListener('click', ()=>{ state.sel = d; fillGrid(); });
-        grid.appendChild(btn);
-      }
-      head.querySelector('.title').textContent = fmtMonth(state.view);
-    }
+    function fillGrid(){
+      grid.innerHTML='';
+      const first = new Date(state.view); first.setDate(1);
+      const start = new Date(first); start.setDate(1 - first.getDay());
+      const today = new Date();
+      for(let i=0;i<42;i++){
+        const d = addDays(start, i);
+        const btn = document.createElement('button');
+        btn.type='button'; btn.className='dcell';
+        if (d.getMonth()!==state.view.getMonth()) btn.classList.add('other');
+        if (sameDay(d, today)) btn.classList.add('today');
+        if (sameDay(d, state.sel)) btn.classList.add('sel');
+        btn.textContent = d.getDate();
+        btn.addEventListener('click', ()=>{ state.sel = d; fillGrid(); });
+        grid.appendChild(btn);
+      }
+      head.querySelector('.title').textContent = fmtMonth(state.view);
+    }
 
-    head.addEventListener('click', (e)=>{
-      const nav = e.target.closest('[data-nav]');
-      if (!nav) return;
-      const dir = Number(nav.dataset.nav);
-      state.view.setMonth(state.view.getMonth()+dir);
-      fillGrid();
-    });
+    head.addEventListener('click', (e)=>{
+      const nav = e.target.closest('[data-nav]');
+      if (!nav) return;
+      const dir = Number(nav.dataset.nav);
+      state.view.setMonth(state.view.getMonth()+dir);
+      fillGrid();
+    });
 
-    fillGrid();
-    return { wrapper, state, hourSel, minSel };
-  }
+    fillGrid();
+    return { wrapper, state, hourSel, minSel };
+  }
 
-  let portalOpen = null;
-  function closePortal(){
-    if (!portalOpen) return;
-    const { cleanup } = portalOpen;
-    portalOpen = null;
-    if (cleanup) cleanup();
-    duePortal.style.display='none';
-    duePortal.innerHTML='';
-  }
+  let portalOpen = null;
+  function closePortal(){
+    if (!portalOpen) return;
+    const { cleanup } = portalOpen;
+    portalOpen = null;
+    if (cleanup) cleanup();
+    duePortal.style.display='none';
+    duePortal.innerHTML='';
+  }
 
-  function openPortalFor(anchorEl, taskId, currentTs){
-    closePortal();
-    duePortal.style.display='block';
-    const { wrapper, state, hourSel, minSel } = buildCalendarContent(currentTs);
-    duePortal.appendChild(wrapper);
+  function openPortalFor(anchorEl, taskId, currentTs){
+    closePortal();
+    duePortal.style.display='block';
+    const { wrapper, state, hourSel, minSel } = buildCalendarContent(currentTs);
+    duePortal.appendChild(wrapper);
 
-    function place(){
-      const rect = anchorEl.getBoundingClientRect();
-      const W = 320, GAP = 8;
-      wrapper.style.left = Math.min(Math.max(8, rect.right - W), window.innerWidth - W - 8) + 'px';
-      let top = rect.bottom + GAP;
-      wrapper.style.top = top + 'px';
-      const r = wrapper.getBoundingClientRect();
-      if (r.bottom > window.innerHeight - 8){
-        top = rect.top - r.height - GAP;
-        if (top < 8) top = 8;
-        wrapper.style.top = top + 'px';
-      }
-    }
-    place();
+    function place(){
+      const rect = anchorEl.getBoundingClientRect();
+      const W = 320, GAP = 8;
+      wrapper.style.left = Math.min(Math.max(8, rect.right - W), window.innerWidth - W - 8) + 'px';
+      let top = rect.bottom + GAP;
+      wrapper.style.top = top + 'px';
+      const r = wrapper.getBoundingClientRect();
+      if (r.bottom > window.innerHeight - 8){
+        top = rect.top - r.height - GAP;
+        if (top < 8) top = 8;
+        wrapper.style.top = top + 'px';
+      }
+    }
+    place();
 
-    const onScroll = ()=>place();
-    const onResize = ()=>place();
-    window.addEventListener('scroll', onScroll, {passive:true});
-    window.addEventListener('resize', onResize, {passive:true});
+    const onScroll = ()=>place();
+    const onResize = ()=>place();
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onResize, {passive:true});
 
-    wrapper.addEventListener('click', (e)=>{
-      if (e.target.closest('[data-act=due-cancel]')){ closePortal(); e.stopPropagation(); }
-      if (e.target.closest('[data-act=due-save]')){
-        const key = getSelected();
-        const arr = getTasks(key);
-        const idx = arr.findIndex(t=>t.id===taskId);
-        if (idx>=0){
-          const sel = new Date(state.sel);
-          sel.setHours(Number(hourSel.value), Number(minSel.value), 0, 0);
-          arr[idx].dueAt = sel.getTime();
-          setTasks(key, arr);
-          renderDay(); renderCalendar();
-        }
-        closePortal(); e.stopPropagation();
-      }
-    });
+    wrapper.addEventListener('click', (e)=>{
+      if (e.target.closest('[data-act=due-cancel]')){ closePortal(); e.stopPropagation(); }
+      if (e.target.closest('[data-act=due-save]')){
+        const key = getSelected();
+        const arr = getTasks(key);
+        const idx = arr.findIndex(t=>t.id===taskId);
+        if (idx>=0){
+          const sel = new Date(state.sel);
+          sel.setHours(Number(hourSel.value), Number(minSel.value), 0, 0);
+          arr[idx].dueAt = sel.getTime();
+          setTasks(key, arr);
+          renderDay(); renderCalendar();
+        }
+        closePortal(); e.stopPropagation();
+      }
+    });
 
-    portalOpen = { cleanup: ()=>{
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onResize);
-    }};
-  }
+    portalOpen = { cleanup: ()=>{
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    }};
+  }
 
-  list.addEventListener('click', (e)=>{
-    const key = getSelected();
-    const li = e.target.closest('.item'); if (!li) return;
-    const id = li.dataset.id;
-    const arr = getTasks(key);
-    const i = arr.findIndex(t=>t.id===id);
+  list.addEventListener('click', (e)=>{
+    const key = getSelected();
+    const li = e.target.closest('.item'); if (!li) return;
+    const id = li.dataset.id;
+    const arr = getTasks(key);
+    const i = arr.findIndex(t=>t.id===id);
 
-    if (e.target.closest('[data-act=del]')){
-      const newArr = arr.filter(t=>t.id!==id);
-      setTasks(key, newArr); renderDay(); renderCalendar();
-      return;
-    }
-    if (e.target.closest('[data-act=rep]')){
-      if (i>=0){ arr[i].repeat = cycleRepeat(arr[i].repeat||'none'); setTasks(key, arr); renderDay(); }
-      return;
-    }
-    if (e.target.closest('[data-act=due]')){
-      const btn = e.target.closest('[data-act=due]');
-      const currentTs = arr[i]?.dueAt || Date.now();
-      openPortalFor(btn, id, currentTs);
-      e.stopPropagation();
-      return;
-    }
-  });
+    if (e.target.closest('[data-act=del]')){
+      const newArr = arr.filter(t=>t.id!==id);
+      setTasks(key, newArr); renderDay(); renderCalendar();
+      return;
+    }
+    if (e.target.closest('[data-act=rep]')){
+      if (i>=0){ arr[i].repeat = cycleRepeat(arr[i].repeat||'none'); setTasks(key, arr); renderDay(); }
+      return;
+    }
+    if (e.target.closest('[data-act=due]')){
+      const btn = e.target.closest('[data-act=due]');
+      const currentTs = arr[i]?.dueAt || Date.now();
+      openPortalFor(btn, id, currentTs);
+      e.stopPropagation();
+      return;
+    }
+  });
 
-  // ---------- Delegated clicks for header controls ----------
-  document.addEventListener('click', (e)=>{
-    if (e.target.closest('#clearDone')){
-      const key=getSelected(); const arr=getTasks(key).filter(t=>!t.done);
-      setTasks(key, arr); renderDay(); renderCalendar();
-    }else if (e.target.closest('#clearAll')){
-      if(!confirm('이 날짜의 모든 할 일을 삭제할까요?')) return;
-      const key=getSelected(); setTasks(key, []); renderDay(); renderCalendar();
-    }else if (e.target.closest('#rolloverBtn')){
-      const key = getSelected();
-      const nextKey = ymd(addDays(new Date(key), 1));
-      const arr = getTasks(key);
-      const undone = arr.filter(t=>!t.done);
-      const remain = arr.filter(t=>t.done);
-      setTasks(key, remain);
-      const nextArr = getTasks(nextKey).concat(undone.map(t=>({ ...t })));
-      setTasks(nextKey, nextArr);
-      renderDay(); renderCalendar();
-      alert(`미완료 ${undone.length}개를 ${nextKey}로 이월했습니다.`);
-    }
-  });
+  // ---------- Delegated clicks for header controls ----------
+  document.addEventListener('click', (e)=>{
+    if (e.target.closest('#clearDone')){
+      const key=getSelected(); const arr=getTasks(key).filter(t=>!t.done);
+      setTasks(key, arr); renderDay(); renderCalendar();
+    }else if (e.target.closest('#clearAll')){
+      if(!confirm('이 날짜의 모든 할 일을 삭제할까요?')) return;
+      const key=getSelected(); setTasks(key, []); renderDay(); renderCalendar();
+    }else if (e.target.closest('#rolloverBtn')){
+      const key = getSelected();
+      const nextKey = ymd(addDays(new Date(key), 1));
+      const arr = getTasks(key);
+      const undone = arr.filter(t=>!t.done);
+      const remain = arr.filter(t=>t.done);
+      setTasks(key, remain);
+      const nextArr = getTasks(nextKey).concat(undone.map(t=>({ ...t })));
+      setTasks(nextKey, nextArr);
+      renderDay(); renderCalendar();
+      alert(`미완료 ${undone.length}개를 ${nextKey}로 이월했습니다.`);
+    }
+  });
 
-  // PiP
-  const supported = 'documentPictureInPicture' in window;
-  document.getElementById('openPiP').addEventListener('click', async ()=>{
-    if (!supported){ alert('이 브라우저는 문서 PiP를 지원하지 않습니다. Chrome/Edge 최신 버전을 사용하세요.'); return; }
-    try{
-      const pipWin = await documentPictureInPicture.requestWindow({ width: 420, height: 560 });
-      [...document.styleSheets].forEach(ss=>{ try{ pipWin.document.head.appendChild(ss.ownerNode.cloneNode(true)); }catch{} });
-      const tpl = document.getElementById('pip-template');
-      pipWin.document.body.appendChild(pipWin.document.importNode(tpl.content, true));
-      pipWin.document.title = '';
+  // PiP
+  const supported = 'documentPictureInPicture' in window;
+  document.getElementById('openPiP').addEventListener('click', async ()=>{
+    if (!supported){ alert('이 브라우저는 문서 PiP를 지원하지 않습니다. Chrome/Edge 최신 버전을 사용하세요.'); return; }
+    try{
+      const pipWin = await documentPictureInPicture.requestWindow({ width: 420, height: 560 });
+      [...document.styleSheets].forEach(ss=>{ try{ pipWin.document.head.appendChild(ss.ownerNode.cloneNode(true)); }catch{} });
+      const tpl = document.getElementById('pip-template');
+      pipWin.document.body.appendChild(pipWin.document.importNode(tpl.content, true));
+      pipWin.document.title = '';
 
-      bindPiP(pipWin.document);
-    }catch(err){
-      console.error(err); alert('PiP 창을 열 수 없습니다: ' + err);
-    }
-  });
+      bindPiP(pipWin.document);
+    }catch(err){
+      console.error(err); alert('PiP 창을 열 수 없습니다: ' + err);
+    }
+  });
 
-  function bindPiP(doc){
-    const pipDate = doc.getElementById('pipDate');
-    const list = doc.getElementById('list');
-    const progText = doc.getElementById('progText');
-    const counter = doc.getElementById('counter');
-    const progBar = doc.getElementById('progBar');
+  function bindPiP(doc){
+    const pipDate = doc.getElementById('pipDate');
+    const list = doc.getElementById('list');
+    const progText = doc.getElementById('progText');
+    const counter = doc.getElementById('counter');
+    const progBar = doc.getElementById('progBar');
 
-    const pipWin = doc.defaultView;
-    const pipBC  = new pipWin.BroadcastChannel('CAL_TODO_SYNC_V1');
+    const pipWin = doc.defaultView;
+    const pipBC  = new pipWin.BroadcastChannel('CAL_TODO_SYNC_V1');
 
-    function pipGetSelected(){ return getSelected(pipWin); }
-    function pipGetTasks(k){ return getTasks(k, pipWin); }
-    function pipSetTasks(k, arr){ setTasks(k, arr, pipWin, pipBC); }
+    function pipGetSelected(){ return getSelected(pipWin); }
+    function pipGetTasks(k){ return getTasks(k, pipWin); }
+    function pipSetTasks(k, arr){ setTasks(k, arr, pipWin, pipBC); }
 
-    function key(){ return pipGetSelected(); }
+    function key(){ return pipGetSelected(); }
 
-    function render(){
-      const k = key();
-      pipDate.textContent = k;
-      const tasks = pipGetTasks(k);
-      const total = tasks.length, done = tasks.filter(t=>t.done).length, ratio = total? Math.round(done/total*100):0;
-      list.innerHTML = '';
-      tasks.forEach(item => {
-        const li = doc.createElement('li');
-        li.className = 'item' + (item.done ? ' done': '');
-        li.dataset.id = item.id;
-        li.innerHTML = `
-          <input type="checkbox" ${item.done?'checked':''} aria-label="완료">
-          <div class="txtwrap"><div class="txt" spellcheck="false"></div></div>
-          <div class="actions"></div>`;
-        li.querySelector('.txt').textContent = item.text;
-        list.appendChild(li);
-      });
-      progText.textContent = `완료/전체 ${ratio}%`;
-      counter.textContent = `${done} / ${total}`;
-      progBar.value = ratio;
-    }
+    function render(){
+      const k = key();
+      pipDate.textContent = k;
+      const tasks = pipGetTasks(k);
+      const total = tasks.length, done = tasks.filter(t=>t.done).length, ratio = total? Math.round(done/total*100):0;
+      list.innerHTML = '';
+      tasks.forEach(item => {
+        const li = doc.createElement('li');
+        li.className = 'item' + (item.done ? ' done': '');
+        li.dataset.id = item.id;
+        li.innerHTML = `
+          <input type="checkbox" ${item.done?'checked':''} aria-label="완료">
+          <div class="txtwrap"><div class="txt" spellcheck="false"></div></div>
+          <div class="actions"></div>`;
+        li.querySelector('.txt').textContent = item.text;
+        list.appendChild(li);
+      });
+      progText.textContent = `완료/전체 ${ratio}%`;
+      counter.textContent = `${done} / ${total}`;
+      progBar.value = ratio;
+    }
 
-    list.addEventListener('change', (e)=>{
-      if (e.target.matches('input[type=checkbox]')){
-        const k = key();
-        const id = e.target.closest('.item')?.dataset.id;
-        const arr = pipGetTasks(k);
-        const i = arr.findIndex(t=>t.id===id);
-        if (i>=0){
-          arr[i].done = !!e.target.checked;
-          pipSetTasks(k, arr);
-          render();
-        }
-      }
-    });
+    list.addEventListener('change', (e)=>{
+      if (e.target.matches('input[type=checkbox]')){
+        const k = key();
+        const id = e.target.closest('.item')?.dataset.id;
+        const arr = pipGetTasks(k);
+        const i = arr.findIndex(t=>t.id===id);
+        if (i>=0){
+          arr[i].done = !!e.target.checked;
+          pipSetTasks(k, arr);
+          render();
+        }
+      }
+    });
 
-    pipBC.addEventListener('message', (m)=>{
-      const t = m.data?.type;
-      if (t==='tasks' || t==='date' || t==='hourly-sync'){ render(); }
-    });
-    pipWin.addEventListener('storage', (e)=>{
-      if (e.key===TASKS_KEY || e.key===SEL_KEY || e.key===REV_KEY) render();
-    });
+    pipBC.addEventListener('message', (m)=>{
+      const t = m.data?.type;
+      if (t==='tasks' || t==='date' || t==='hourly-sync'){ render(); }
+    });
+    pipWin.addEventListener('storage', (e)=>{
+      if (e.key===TASKS_KEY || e.key===SEL_KEY || e.key===REV_KEY) render();
+    });
 
-    render();
-  }
+    render();
+  }
 
-  bc.addEventListener('message', (m)=>{
-    const t=m.data?.type;
-    if (t==='tasks'){ renderDay(); renderCalendar(); }
-    if (t==='date'){ renderCalendar(); renderDay(); }
-    if (t==='hourly-sync'){ renderDay(); renderCalendar(); }
-  });
-  window.addEventListener('storage', (e)=>{ if (e.key===TASKS_KEY || e.key===SEL_KEY || e.key===REV_KEY){ renderDay(); renderCalendar(); } });
+  bc.addEventListener('message', (m)=>{
+    const t=m.data?.type;
+    if (t==='tasks'){ renderDay(); renderCalendar(); }
+    if (t==='date'){ renderCalendar(); renderDay(); }
+    if (t==='hourly-sync'){ renderDay(); renderCalendar(); }
+  });
+  window.addEventListener('storage', (e)=>{ if (e.key===TASKS_KEY || e.key===SEL_KEY || e.key===REV_KEY){ renderDay(); renderCalendar(); } });
 
-  applyTheme();
-  requestNotify();
-  runDailyRollover();
-  renderCalendar();
-  renderDay();
+  applyTheme();
+  requestNotify();
+  runDailyRollover();
+  renderCalendar();
+  renderDay();
 
-  function scheduleHourlySync(cb){
-    const now = new Date();
-    const msToNextHour = (60 - now.getMinutes())*60*1000 - now.getSeconds()*1000 - now.getMilliseconds();
-    setTimeout(()=>{ try{ cb(); }catch{}; setInterval(()=>{ try{ cb(); }catch{} }, 60*60*1000); }, Math.max(5000, msToNextHour));
-  }
-  scheduleHourlySync(()=>{ bc.postMessage({type:'hourly-sync'}); renderDay(); renderCalendar(); });
+  function scheduleHourlySync(cb){
+    const now = new Date();
+    const msToNextHour = (60 - now.getMinutes())*60*1000 - now.getSeconds()*1000 - now.getMilliseconds();
+    setTimeout(()=>{ try{ cb(); }catch{}; setInterval(()=>{ try{ cb(); }catch{} }, 60*60*1000); }, Math.max(5000, msToNextHour));
+  }
+  scheduleHourlySync(()=>{ bc.postMessage({type:'hourly-sync'}); renderDay(); renderCalendar(); });
 
-  setInterval(()=>{
-    const all = loadMap(TASKS_KEY);
-    const now = Date.now();
-    for (const key of Object.keys(all)){
-      for (const t of all[key]){
-        if (t.dueAt && !t.done && t.dueAt <= now){
-          maybeNotify(t, key);
-        }
-      }
-    }
-  }, 30000);
+  setInterval(()=>{
+    const all = loadMap(TASKS_KEY);
+    const now = Date.now();
+    for (const key of Object.keys(all)){
+      for (const t of all[key]){
+        if (t.dueAt && !t.done && t.dueAt <= now){
+          maybeNotify(t, key);
+        }
+      }
+    }
+  }, 30000);
 })();
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3323631723585454"
-     crossorigin="anonymous"></script>
 </script>
 </body>
 </html>
